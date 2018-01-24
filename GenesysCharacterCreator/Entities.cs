@@ -88,6 +88,11 @@ namespace GenesysCharacterCreator
             return _name + c;
         }
 
+        public override string ToString()
+        {
+            return OutputName();
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged(string name)
