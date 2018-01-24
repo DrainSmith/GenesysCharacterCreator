@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="GenesysCharacterCreator.CharacteristicControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GenesysCharacterCreator"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" >
+    <Viewbox>
+        <Grid>
+            <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path3750" Fill="#FF0E5D8C">
+                <Path.Data>
+                    <PathGeometry Figures="M97.776 37.979h-6.45c-1.451 19.478-17.701 34.833-37.55 34.833s-36.1-15.355-37.55-34.833h-6.117l-7.5 7.5  v60h102.667v-60L97.776 37.979z" FillRule="NonZero"/>
+                </Path.Data>
+            </Path>
+            <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path3752" Fill="#FFE9EAF3">
+                <Path.Data>
+                    <PathGeometry Figures="M77.861 59.191H30.28V11.61h47.582V59.191z M31.28 58.191h45.582V12.61H31.28V58.191z" FillRule="NonZero"/>
+                </Path.Data>
+            </Path>
+            <Canvas Name="g3760">
+                <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="53.443" Canvas.Top="1.625" Width="1" Height="1" Name="rect3754" Fill="#FFE9EAF3"/>
+                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path3756" Fill="#FFE9EAF3">
+                    <Path.Data>
+                        <PathGeometry Figures="M54.443 18.514h-1v-1.986h1V18.514z M54.443 14.542h-1v-1.986h1V14.542z M54.443 10.57h-1V8.583h1V10.57z    M54.443 6.598h-1V4.611h1V6.598z" FillRule="NonZero"/>
+                    </Path.Data>
+                </Path>
+                <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="53.443" Canvas.Top="20.5" Width="1" Height="1" Name="rect3758" Fill="#FFE9EAF3"/>
+            </Canvas>
+            <Canvas Name="g3768">
+                <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="85.756" Canvas.Top="34.901" Width="1" Height="1" Name="rect3762" Fill="#FFE9EAF3"/>
+                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path3764" Fill="#FFE9EAF3">
+                    <Path.Data>
+                        <PathGeometry Figures="M83.77 35.901h-1.986v-1h1.986V35.901z M79.797 35.901h-1.986v-1h1.986V35.901z M75.825 35.901h-1.986v-1   h1.986V35.901z M71.853 35.901h-1.986v-1h1.986V35.901z" FillRule="NonZero"/>
+                    </Path.Data>
+                </Path>
+                <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="66.881" Canvas.Top="34.901" Width="1" Height="1" Name="rect3766" Fill="#FFE9EAF3"/>
+            </Canvas>
+            <Canvas Name="g3776">
+                <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="53.442" Canvas.Top="68.177" Width="1" Height="1" Name="rect3770" Fill="#FFE9EAF3"/>
+                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path3772" Fill="#FFE9EAF3">
+                    <Path.Data>
+                        <PathGeometry Figures="M54.442 66.19h-1v-1.986h1V66.19z M54.442 62.218h-1v-1.986h1V62.218z M54.442 58.246h-1V56.26h1V58.246z    M54.442 54.274h-1v-1.986h1V54.274z" FillRule="NonZero"/>
+                    </Path.Data>
+                </Path>
+                <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="53.442" Canvas.Top="49.302" Width="1" Height="1" Name="rect3774" Fill="#FFE9EAF3"/>
+            </Canvas>
+            <Canvas Name="g3784">
+                <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="21.13" Canvas.Top="34.901" Width="1" Height="1" Name="rect3778" Fill="#FFE9EAF3"/>
+                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path3780" Fill="#FFE9EAF3">
+                    <Path.Data>
+                        <PathGeometry Figures="M38.019 35.901h-1.986v-1h1.986V35.901z M34.047 35.901h-1.986v-1h1.986V35.901z M30.075 35.901h-1.986v-1   h1.986V35.901z M26.103 35.901h-1.986v-1h1.986V35.901z" FillRule="NonZero"/>
+                    </Path.Data>
+                </Path>
+                <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="40.005" Canvas.Top="34.901" Width="1" Height="1" Name="rect3782" Fill="#FFE9EAF3"/>
+            </Canvas>
+            <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path3786" Fill="#FF005D8C">
+                <Path.Data>
+                    <PathGeometry Figures="M53.943 70.938c-19.558 0-35.469-15.911-35.469-35.469C18.474 15.911 34.385 0 53.943 0  C73.5 0 89.412 15.911 89.412 35.469C89.412 55.027 73.5 70.938 53.943 70.938z M53.943 3C36.04 3 21.474 17.565 21.474 35.469  c0 17.904 14.566 32.469 32.469 32.469c17.903 0 32.469-14.565 32.469-32.469C86.412 17.565 71.846 3 53.943 3z" FillRule="NonZero"/>
+                </Path.Data>
+            </Path>
+            <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path3788" Fill="#FF005D8C">
+                <Path.Data>
+                    <PathGeometry Figures="M99.453 35.401h-10.14c0 0.335 0.01 0.609 0 0.942l9.734 0.058l8.094 7.837v62.819H1v-62.87l7.816-7.786  l9.825 0.036c-0.009-0.333-0.078-0.701-0.078-1.036H8.403L0 43.772v64.286h108.141V43.814L99.453 35.401z" FillRule="NonZero"/>
+                </Path.Data>
+            </Path>
+            <Canvas Name="g3792">
+                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path3790" Fill="#FFE9EAF3">
+                    <Path.Data>
+                        <PathGeometry Figures="M54.07 66.898c-17.33 0-31.429-14.099-31.429-31.43c0-17.33 14.099-31.429 31.429-31.429   c17.331 0 31.43 14.099 31.43 31.429C85.5 52.799 71.401 66.898 54.07 66.898z M54.07 5.04c-16.779 0-30.429 13.65-30.429 30.429   s13.65 30.43 30.429 30.43S84.5 52.248 84.5 35.469S70.849 5.04 54.07 5.04z" FillRule="NonZero"/>
+                    </Path.Data>
+                </Path>
+            </Canvas>
+            <TextBlock x:Name="CharacteristicValueTextBlock" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,17,0,0" FontSize="25" Foreground="Black" Text="{Binding Path=CharacteristicValue}"></TextBlock>
+            <TextBlock x:Name="CharacteristicNameTextBlock"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" FontSize="18" Foreground="White" Text="{Binding Path=CharacteristicName}" />
+        </Grid>
+    </Viewbox>
+</UserControl>

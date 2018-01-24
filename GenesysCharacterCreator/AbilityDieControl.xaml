@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="GenesysCharacterCreator.AbilityDieControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GenesysCharacterCreator"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Viewbox>
+        <Canvas Name="g27" Height="70" Width="53">
+            <Polygon xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Points="26.093,66.939 1.848,34.584 26.093,2.454 50.267,34.584  " Name="polygon23" FillRule="NonZero" Fill="#FF43AD49"/>
+            <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path25" Fill="#000000">
+                <Path.Data>
+                    <PathGeometry Figures="M26.096 69.404L0 34.581L26.096 0l26.019 34.581L26.096 69.404z M3.695 34.587l22.396 29.888l22.331-29.888L26.091 4.907   L3.695 34.587z" FillRule="NonZero"/>
+                </Path.Data>
+            </Path>
+        </Canvas>
+    </Viewbox>
+</UserControl>

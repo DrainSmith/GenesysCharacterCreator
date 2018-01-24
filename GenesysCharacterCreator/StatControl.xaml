@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="GenesysCharacterCreator.StatControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GenesysCharacterCreator"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="166">
+    <Viewbox>
+        <Grid Width="166" Height="100">
+
+            <Canvas Name="g35">
+                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path33" Fill="#FFF79520">
+                    <Path.Data>
+                        <PathGeometry Figures="M145.717 17.146c0 0 19.042 14.636 19.042 41.996c0 27.361-17.138 40.088-17.138 40.088H18.138   C18.138 99.23 1 87.458 1 59.142c0-28.315 19.042-41.996 19.042-41.996H145.717 M146.057 16.146h-0.34H20.042H19.72l-0.262 0.188   C19.264 16.474 0 30.644 0 59.142c0 28.514 16.854 40.419 17.571 40.912l0.256 0.176h0.311h129.483h0.331l0.266-0.197   c0.175-0.13 17.542-13.345 17.542-40.891c0-27.535-19.238-42.64-19.432-42.789L146.057 16.146L146.057 16.146z" FillRule="NonZero"/>
+                    </Path.Data>
+                </Path>
+            </Canvas>
+            <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path37" Fill="#FF932B24">
+                <Path.Data>
+                    <PathGeometry Figures="M20.042 17.146c0 0-19.042 13.681-19.042 41.996C1 87.458 18.138 99.23 18.138 99.23h129.483  c0 0 17.138-12.727 17.138-40.088c0-27.36-19.042-41.996-19.042-41.996H20.042z" FillRule="NonZero"/>
+                </Path.Data>
+            </Path>
+            <Path x:Name="SplitBackground" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="#FF0D5C8B">
+                <Path.Data>
+                    <PathGeometry Figures="M145.717 17.146H82.88V99.23h64.741c0 0 17.138-12.727 17.138-40.088  C164.759 31.782 145.717 17.146 145.717 17.146z" FillRule="NonZero"/>
+                </Path.Data>
+            </Path>
+            <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path41" Fill="#FFF79520">
+                <Path.Data>
+                    <PathGeometry Figures="M133.234 75.813H32.817L7.025 49.955V0h151.708v50.018L133.234 75.813z M33.233 74.813h99.583l24.917-25.206  V1H8.025v48.542L33.233 74.813z" FillRule="NonZero"/>
+                </Path.Data>
+            </Path>
+            <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path43" Fill="#FFFFFFFF">
+                <Path.Data>
+                    <PathGeometry Figures="M33.132 74.813h99.684l24.917-25.206L157.633 1H7.924v48.542L33.132 74.813z" FillRule="NonZero"/>
+                </Path.Data>
+            </Path>
+            <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path45" Fill="#FFF79520">
+                <Path.Data>
+                    <PathGeometry Figures="M140.753 31.729H25.005L9.046 15.77V2.563h147.667V15.77L140.753 31.729z M25.42 30.729h114.919  l15.374-15.374V3.563H10.046v11.793L25.42 30.729z" FillRule="NonZero"/>
+                </Path.Data>
+            </Path>
+            <Polygon xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Points="10.046,3.5 10.046,15.593 25.606,30.75 140.508,30.75 155.713,15.593 155.713,3.5 " Name="polygon47" FillRule="NonZero" Fill="#FF932B24"/>
+
+
+            <TextBlock x:Name="StatNameTextBlock" HorizontalAlignment="Center" Foreground="White" Margin="0,5,0,0" FontSize="16" Text="{Binding Path=StatName}"></TextBlock>
+            <Rectangle x:Name="SplitLine" Visibility="Visible" Width="1" Height="45" Fill="#932B24" Margin="0,10,0,0"/>
+
+            <Grid VerticalAlignment="Center" Margin="0,10,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="MiddleLeftTextBlock" HorizontalAlignment="Right" Foreground="Black" FontSize="22" Visibility="Visible" Margin="0,0,20,0"></TextBlock>
+                <TextBlock Grid.Column="1" x:Name="MiddleRightTextBlock" HorizontalAlignment="Left" Foreground="Black" FontSize="22" Visibility="Visible" Margin="20,0,0,0"></TextBlock>
+            </Grid>
+
+            <Grid VerticalAlignment="Bottom" Margin="0,0,0,5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="BottomLeftTextBlock" HorizontalAlignment="Center" Foreground="White" FontSize="12" Visibility="Visible" Margin="5,0,0,0" Text="{Binding Path=BottomLeftText}"></TextBlock>
+                <TextBlock Grid.Column="1" x:Name="BottomRightTextBlock" HorizontalAlignment="Center" Foreground="White" FontSize="12" Visibility="Visible" Margin="0,0,5,0" Text="{Binding Path=BottomRightText}"></TextBlock>
+            </Grid>
+            
+        </Grid>
+
+    </Viewbox>
+</UserControl>

@@ -1,0 +1,52 @@
+﻿<Window x:Class="GenesysCharacterCreator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GenesysCharacterCreator"
+        mc:Ignorable="d"
+        Title="Genesys Character Creator" Height="422.738" Width="292.978" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True">
+    <Border Name="MainWindowBorder">
+        <DockPanel LastChildFill="True" >
+            <Border DockPanel.Dock="Top" Height="28" Name="titlebar" MouseLeftButtonDown="titlebar_MouseLeftButtonDown" BorderThickness="0" Background="LightGray">
+                <Grid>
+                    <TextBlock Text="{Binding Title, RelativeSource={RelativeSource FindAncestor,AncestorType=Window},FallbackValue=Title}" 
+                           Margin="10,0,0,0"
+                           VerticalAlignment="Center" HorizontalAlignment="Left">
+
+                    </TextBlock>
+                    <StackPanel Name="HomeButtonsPanel" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="2">
+                        <Button Margin="2,0,0,0" Name="ExitButton" Click="ExitButton_Click" Content="✖" FontSize="14" Height="23" Width="23" BorderThickness="0" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <Button Width="70" Height="35" Margin="3" Click="NewButton_Click">New</Button>
+                    <Button Width="70" Height="35" Margin="3">Import</Button>
+                    <Button Width="70" Height="35" Margin="3">Open</Button>
+                    <Button Width="70" Height="35" Margin="3,15,3,3">Delete</Button>
+                    <Button Width="70" Height="45" Margin="3,3,3,3" Click="EditSettingsButton_Click">
+                        <TextBlock TextWrapping="Wrap">Setting Builder</TextBlock>
+                    </Button>
+                    <Button Width="70" Height="45" Margin="3,3,3,3" Click="SkillsEditorButton_Click">
+                        <TextBlock TextWrapping="Wrap">Skills Editer</TextBlock>
+                    </Button>
+                    <Button Width="70" Height="45" Margin="3,3,3,3" Click="ArchetypeEditorButton_Click">
+                        <TextBlock TextWrapping="Wrap" TextAlignment="Center">Archetype Editer</TextBlock>
+                    </Button>
+                    <Button Width="70" Height="45" Margin="3,3,3,3" Click="CareerEditorButton_Click">
+                        <TextBlock TextWrapping="Wrap" TextAlignment="Center">Career Editer</TextBlock>
+                    </Button>
+                </StackPanel>
+                
+                <ListBox Grid.Column="1" Name="CharactersListBox"></ListBox>
+                <TextBlock Name="NoCharactersText" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" IsHitTestVisible="False" Foreground="#60000000">No characters</TextBlock>
+            </Grid>
+        </DockPanel>
+    </Border>
+</Window>

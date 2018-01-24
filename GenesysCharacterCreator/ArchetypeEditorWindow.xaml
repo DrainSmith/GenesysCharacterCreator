@@ -1,0 +1,109 @@
+﻿<Window x:Class="GenesysCharacterCreator.ArchetypeEditorWindow"
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GenesysCharacterCreator"
+        mc:Ignorable="d"
+        Title="Apply Experience Points" Height="814.884" Width="793.63" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True">
+    <Border  Name="MainWindowBorder" >
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="28"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Border DockPanel.Dock="Top" Height="28" Name="titlebar" MouseLeftButtonDown="titlebar_MouseLeftButtonDown" BorderThickness="0" VerticalAlignment="Top" Background="LightGray">
+                <Grid>
+                    <TextBlock Text="{Binding Title, RelativeSource={RelativeSource FindAncestor,AncestorType=Window},FallbackValue=Title}" 
+                           Margin="10,4,0,6"
+                           VerticalAlignment="Center" HorizontalAlignment="Left" IsHitTestVisible="False">
+
+                    </TextBlock>
+                    <StackPanel Name="HomeButtonsPanel" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="2">
+                        <Button Margin="2,0,0,0" Name="ExitButton" Click="ExitButton_Click" Content="✖" FontSize="14" Height="23" Width="23" BorderThickness="0" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="105"/>
+                    <RowDefinition Height="26"/>
+                    <RowDefinition Height="115"/>
+                    <RowDefinition Height="26"/>
+                    <RowDefinition />
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <DockPanel>
+                <TextBlock Text="Name:" FontSize="24" DockPanel.Dock="Left" VerticalAlignment="Center" Margin="3"/>
+                    <TextBox Name="NameTextBox" Margin="5"></TextBox>
+                </DockPanel>
+                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <local:CharacteristicControl x:Name="BrawnCharacteristic" CharacteristicStartValue="1" Height="100" Width="100" Margin="5,0,5,0" CharacteristicName="BRAWN"/>
+                    <local:CharacteristicControl x:Name="AgilityCharacteristic" CharacteristicStartValue="1" Height="100" Width="100" Margin="5,0,5,0"  CharacteristicName="AGILITY"/>
+                    <local:CharacteristicControl x:Name="IntellectCharacteristic" CharacteristicStartValue="1" Height="100" Width="100" Margin="5,0,5,0" CharacteristicName="INTELLECT"/>
+                    <local:CharacteristicControl x:Name="CunningCharacteristic" CharacteristicStartValue="1" Height="100" Width="100" Margin="5,0,5,0" CharacteristicName="CUNNING"/>
+                    <local:CharacteristicControl x:Name="WillpowerCharacteristic" CharacteristicStartValue="1" Height="100" Width="100" Margin="5,0,5,0" CharacteristicName="WILLPOWER"/>
+                    <local:CharacteristicControl x:Name="PresenceCharacteristic" CharacteristicStartValue="1" Height="100" Width="100" Margin="5,0,5,0" CharacteristicName="PRESENCE"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2" Width="660" Margin="3">
+                    <local:UpDownControl Height="20" Margin="35,0,0,0" OnUpEvent="BrawnUp_Click" OnDownEvent="BrawnDown_Click"/>
+                    <local:UpDownControl Height="20" Margin="68,0,0,0" OnUpEvent="AgilityUp_Click" OnDownEvent="AgilityDown_Click"/>
+                    <local:UpDownControl Height="20" Margin="67,0,0,0" OnUpEvent="IntellectUp_Click" OnDownEvent="IntellectDown_Click"/>
+                    <local:UpDownControl Height="20" Margin="68,0,0,0" OnUpEvent="CunningUp_Click" OnDownEvent="CunningDown_Click"/>
+                    <local:UpDownControl Height="20" Margin="67,0,0,0" OnUpEvent="WillpowerUp_Click" OnDownEvent="WillpowerDown_Click"/>
+                    <local:UpDownControl Height="20" Margin="68,0,0,0" OnUpEvent="PresenceUp_Click" OnDownEvent="PresenceDown_Click"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="3" Height="110">
+                    <local:StatControl x:Name="WoundsControl" IsSplit="False" StatName="WOUNDS" BaseValue="10"/>
+                    <local:StatControl x:Name="StrainControl" StatName="STRAIN" IsSplit="False" BaseValue="10"/>
+                    <local:ExperienceControl x:Name="StartingExperience" Value="100" Width="170" VerticalAlignment="Center" LabelText="STARTING XP" Margin="5"/>
+                </StackPanel>
+                <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" Margin="3">
+                    <local:UpDownControl Height="20" Margin="0,0,140,0" OnUpEvent="WoundsUp_Click" OnDownEvent="WoundsDown_Click"/>
+                    <local:UpDownControl Height="20" Margin="0,0,0,0" OnUpEvent="StrainUp_Click" OnDownEvent="StrainDown_Click"/>
+                    <local:UpDownControl Height="20" Margin="140,0,0,0" OnUpEvent="XpUp_Click" OnDownEvent="XpDown_Click" />
+                </StackPanel>
+                <Grid Grid.Row="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.ColumnSpan="2" Orientation="Horizontal">
+                            <TextBlock Text="Starting Rank:" VerticalAlignment="Center" FontSize="16" Margin="2"/>
+                            <TextBox Width="35" Margin="2" Name="StartingRankTextBox" VerticalContentAlignment="Center" FontSize="14" Text="1"/>
+                            <local:UpDownControl Height="20" OnUpEvent="StartingRankUp_Click" OnDownEvent="StartingRankDown_Click"/>
+                        </StackPanel>
+                        <ListBox Grid.Row="1" Name="AvailableSkillsListBox" MouseDoubleClick="AvailableSkills_DoubleClick"/>
+                        <ListBox Grid.Row="1" Grid.Column="1" Name="AssignedSkillsListBox" MouseDoubleClick="AssignedSkills_DoubleClick"/>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <StackPanel>
+                            <DockPanel Height="30" VerticalAlignment="Top">
+                                <TextBlock VerticalAlignment="Center" Text="Special Ability" DockPanel.Dock="Left"/>
+                                <TextBox Name="SpecialAbilityTextBox" Margin="3"/>
+                            </DockPanel>
+                            <Button Height="35" Width="100" Content="Add" Click="AddButton_Click"/>
+                            <ListBox Name="SpecialAbilityListBox" Height="150"/>
+                            <Button Height="35" Width="100" Content="Delete" Click="DeleteButton_Click"/>
+                        </StackPanel>
+                    </Grid>
+                    
+                </Grid>
+                <Button Grid.Row="6" Height="30" Width="200" Content="Save" Click="SaveButton_Click"/>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
+
+    

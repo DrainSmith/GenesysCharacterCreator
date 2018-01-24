@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="GenesysCharacterCreator.SkillControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GenesysCharacterCreator"
+             mc:Ignorable="d" Height="22" Width="395" Background="White">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="25"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="155"/>
+            
+        </Grid.ColumnDefinitions>
+        <TextBlock x:Name="SkillNameTextBlock" Grid.Column="1" Text="{Binding Skill.Name}" FontSize="14" VerticalAlignment="Center" Margin="3,0,0,0"/>
+        <local:CareerCheckBox x:Name="CareerCheckBox" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" IsHitTestVisible="True" IsChecked="{Binding Skill.IsCareer}"/>
+        <TextBlock x:Name="RankTextBlock" Grid.Column="3" VerticalAlignment="Center" Text="{Binding Skill.Rank}" HorizontalAlignment="Center"/>
+        <StackPanel x:Name="DicePanel" Grid.Column="4" Height="22" HorizontalAlignment="Right" Orientation="Horizontal">
+
+        </StackPanel>
+        <local:UpDownControl Grid.Column="0" Height="20" VerticalAlignment="Center" OnUpEvent="Up_Click" OnDownEvent="Down_Click"/>
+    </Grid>
+</UserControl>

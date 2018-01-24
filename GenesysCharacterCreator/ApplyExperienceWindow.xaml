@@ -1,0 +1,101 @@
+﻿<Window x:Class="GenesysCharacterCreator.ApplyExperienceWindow"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GenesysCharacterCreator"
+        mc:Ignorable="d"
+        Title="Apply Experience Points" Height="814.884" Width="793.63" ResizeMode="NoResize" WindowStyle="None" Loaded="Window_Loaded"  WindowStartupLocation="CenterScreen" AllowsTransparency="True">
+    <Border  Name="MainWindowBorder" >
+        <DockPanel >
+            <Border DockPanel.Dock="Top" Height="28" Name="titlebar" MouseLeftButtonDown="titlebar_MouseLeftButtonDown" BorderThickness="0" VerticalAlignment="Top" Background="LightGray">
+                <Grid>
+                    <TextBlock Text="{Binding Title, RelativeSource={RelativeSource FindAncestor,AncestorType=Window},FallbackValue=Title}" 
+                           Margin="10,4,0,6"
+                           VerticalAlignment="Center" HorizontalAlignment="Left" IsHitTestVisible="False">
+
+                    </TextBlock>
+                    <StackPanel Name="HomeButtonsPanel" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="2">
+                        <Button Margin="2,0,0,0" Name="ExitButton" Click="ExitButton_Click" Content="✖" FontSize="14" Height="23" Width="23" BorderThickness="0" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="105"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="115"/>
+                    <RowDefinition />
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="45"/>
+                </Grid.RowDefinitions>
+                <Button Width="100" Height="43" Grid.Row="6" Content="Save" FontSize="18" FontWeight="Bold" Click="SaveButton_Click"/>
+                <DockPanel>
+                    <Label Content="Name: " DockPanel.Dock="Left" FontSize="22" FontWeight="Bold" VerticalAlignment="Center"/>
+                    <TextBox VerticalContentAlignment="Center" Margin="2" Name="NameTextBox"/>
+                </DockPanel>
+                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <local:CharacteristicControl x:Name="BrawnCharacteristic" Height="100" Width="100" Margin="5,0,5,0" OnXPEvent="XpEvent" CharacteristicName="BRAWN"/>
+                    <local:CharacteristicControl x:Name="AgilityCharacteristic" Height="100" Width="100" Margin="5,0,5,0" OnXPEvent="XpEvent" CharacteristicName="AGILITY"/>
+                    <local:CharacteristicControl x:Name="IntellectCharacteristic" Height="100" Width="100" Margin="5,0,5,0" OnXPEvent="XpEvent" CharacteristicName="INTELLECT"/>
+                    <local:CharacteristicControl x:Name="CunningCharacteristic" Height="100" Width="100" Margin="5,0,5,0" OnXPEvent="XpEvent" CharacteristicName="CUNNING"/>
+                    <local:CharacteristicControl x:Name="WillpowerCharacteristic" Height="100" Width="100" Margin="5,0,5,0" OnXPEvent="XpEvent" CharacteristicName="WILLPOWER"/>
+                    <local:CharacteristicControl x:Name="PresenceCharacteristic" Height="100" Width="100" Margin="5,0,5,0" OnXPEvent="XpEvent" CharacteristicName="PRESENCE"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2" Width="660">
+                    <local:UpDownControl Height="20" Margin="35,0,0,0" OnUpEvent="BrawnUp_Click" OnDownEvent="BrawnDown_Click"/>
+                    <local:UpDownControl Height="20" Margin="68,0,0,0" OnUpEvent="AgilityUp_Click" OnDownEvent="AgilityDown_Click"/>
+                    <local:UpDownControl Height="20" Margin="67,0,0,0" OnUpEvent="IntellectUp_Click" OnDownEvent="IntellectDown_Click"/>
+                    <local:UpDownControl Height="20" Margin="68,0,0,0" OnUpEvent="CunningUp_Click" OnDownEvent="CunningDown_Click"/>
+                    <local:UpDownControl Height="20" Margin="67,0,0,0" OnUpEvent="WillpowerUp_Click" OnDownEvent="WillpowerDown_Click"/>
+                    <local:UpDownControl Height="20" Margin="68,0,0,0" OnUpEvent="PresenceUp_Click" OnDownEvent="PresenceDown_Click"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="3" Height="110">
+                    <local:StatControl x:Name="SoakValueStatControl" IsSplit="False" StatName="SOAK VALUE" LinkedCharacteristicValue="{Binding ElementName=BrawnCharacteristic, Path=CharacteristicValue}" />
+                    <local:StatControl x:Name="WoundStatControl" IsSplit="False" StatName="WOUNDS" LinkedCharacteristicValue="{Binding ElementName=BrawnCharacteristic, Path=CharacteristicValue}" BaseValue="10"/>
+                    <local:StatControl x:Name="StrainStatControl" StatName="STRAIN" IsSplit="False" LinkedCharacteristicValue="{Binding ElementName=WillpowerCharacteristic, Path=CharacteristicValue}" BaseValue="10"/>
+                    <!--<local:StatControl StatName="DEFENSE" BottomLeftText="RANGED" BottomRightText="MELEE" />-->
+                </StackPanel>
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Name="GeneralSkillsPanel">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Margin="5,0,0,0">Skill Name</Label>
+                            <Label Margin="40,0,0,0">Career?</Label>
+                            <Label Margin="0,0,0,0">Rank</Label>
+                            <Label Margin="100,0,0,0">Dice</Label>
+                        </StackPanel>
+                        <!--<local:SkillControl x:Name="AlchemySkill" VerticalAlignment="Center" SkillName="Alchemy (Int)" LinkedCharacteristicValue="{Binding ElementName=IntellectCharacteristic, Path=CharacteristicValue}" OnXPEvent="XpEvent" Margin="0,3,0,3"/>
+                        <local:SkillControl x:Name="AstrocartographySkill" VerticalAlignment="Center" SkillName="Astrocartography (Int)" LinkedCharacteristicValue="{Binding ElementName=IntellectCharacteristic, Path=CharacteristicValue}" OnXPEvent="XpEvent" Margin="16,3,15.667,3"/>
+                        <local:SkillControl VerticalAlignment="Center" SkillName="Athletics (Br)" LinkedCharacteristicValue="{Binding ElementName=BrawnCharacteristic, Path=CharacteristicValue}" Margin="0,3,0,3"/>
+                        <local:SkillControl VerticalAlignment="Center" SkillName="Computers (Int)" LinkedCharacteristicValue="{Binding ElementName=IntellectCharacteristic, Path=CharacteristicValue}" Margin="0,3,0,3"/>
+                        <local:SkillControl VerticalAlignment="Center" SkillName="Cool (Pr)" LinkedCharacteristicValue="{Binding ElementName=PresenceCharacteristic, Path=CharacteristicValue}" Margin="0,3,0,3"/>
+                        <local:SkillControl VerticalAlignment="Center" SkillName="Coordination (Ag)" LinkedCharacteristicValue="{Binding ElementName=AgilityCharacteristic, Path=CharacteristicValue}" Margin="0,3,0,3"/>
+                        <local:SkillControl VerticalAlignment="Center" SkillName="Discipline (Will)" LinkedCharacteristicValue="{Binding ElementName=WillpowerCharacteristic, Path=CharacteristicValue}" Margin="0,3,0,3"/>
+                        <local:SkillControl VerticalAlignment="Center" SkillName="Driving (Ag)" LinkedCharacteristicValue="{Binding ElementName=AgilityCharacteristic, Path=CharacteristicValue}" Margin="0,3,0,3"/>
+                        <local:SkillControl VerticalAlignment="Center" SkillName="Mechanics (Int)" LinkedCharacteristicValue="{Binding ElementName=IntellectCharacteristic, Path=CharacteristicValue}" Margin="0,3,0,3"/>
+                        <local:SkillControl VerticalAlignment="Center" SkillName="Medicine (Int)" LinkedCharacteristicValue="{Binding ElementName=IntellectCharacteristic, Path=CharacteristicValue}" Margin="0,3,0,3"/>
+                        <local:SkillControl VerticalAlignment="Center" SkillName="Operating (Int)" LinkedCharacteristicValue="{Binding ElementName=IntellectCharacteristic, Path=CharacteristicValue}" Margin="0,3,0,3"/>-->
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Name="SkillsPanel2">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Margin="5,0,0,0">Skill Name</Label>
+                            <Label Margin="40,0,0,0">Career?</Label>
+                            <Label Margin="0,0,0,0">Rank</Label>
+                            <Label Margin="100,0,0,0">Dice</Label>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+
+                <local:ExperienceControl Grid.Row="5" x:Name="TotalExperience" Value="0" Width="170" HorizontalAlignment="Left" VerticalAlignment="Bottom" LabelText="TOTAL XP" Margin="5"/>
+                <local:ExperienceControl Grid.Row="5" x:Name="AvailableExperience" Value="0" Width="170" HorizontalAlignment="Right" VerticalAlignment="Bottom" LabelText="AVAILABLE XP" Margin="5"/>
+            </Grid>
+        </DockPanel>
+    </Border>
+</Window>
+
+    

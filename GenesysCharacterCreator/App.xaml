@@ -1,0 +1,9 @@
+﻿<Application x:Class="GenesysCharacterCreator.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:GenesysCharacterCreator"
+             StartupUri="CharacterSheetWindow.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
