@@ -28,11 +28,13 @@ namespace GenesysCharacterCreator
             Globals.ReadBaseArchtypes();
             Globals.ReadBaseSettings();
             Globals.ReadCharacters();
+            RefreshCharacters();
             Globals.main = this;
         }
 
         public void RefreshCharacters()
         {
+            CharactersListBox.Items.Clear();
             foreach (var c in Globals.Characters)
                 CharactersListBox.Items.Add(c);
             if (Globals.Characters.Count > 0)
@@ -78,6 +80,16 @@ namespace GenesysCharacterCreator
             var c = new CareerEditorWindow();
             c.Owner = this;
             c.Show();
+        }
+
+        private void CharactersListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (CharactersListBox.SelectedIndex != -1)
+            {
+                CharacterSheetWindow csw = new CharacterSheetWindow((Character)CharactersListBox.SelectedItem);
+                
+                csw.Show();
+            }
         }
     }
 }

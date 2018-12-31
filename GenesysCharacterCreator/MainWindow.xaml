@@ -44,7 +44,7 @@
                     </Button>
                 </StackPanel>
                 
-                <ListBox Grid.Column="1" Name="CharactersListBox"></ListBox>
+                <ListBox Grid.Column="1" Name="CharactersListBox" MouseDoubleClick="CharactersListBox_MouseDoubleClick"></ListBox>
                 <TextBlock Name="NoCharactersText" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" IsHitTestVisible="False" Foreground="#60000000">No characters</TextBlock>
             </Grid>
         </DockPanel>

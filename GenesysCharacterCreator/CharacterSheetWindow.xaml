@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GenesysCharacterCreator"
         mc:Ignorable="d"
-        Title="Genesys Character Sheet" Height="863" Width="830" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True">
+        Title="Genesys Character Sheet" Height="823" Width="1059.333" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True">
     <WindowChrome.WindowChrome>
         <WindowChrome 
         CaptionHeight="0"
@@ -34,117 +34,36 @@
                             <MenuItem Header="_Save" Click="SaveButton_Click"/>
                             <MenuItem Header="E_xit" Click="ExitButton_Click"/>
                         </MenuItem>
-                        <MenuItem Header="_Settings" FontSize="16">
-                            <MenuItem Header="Available _Skills" Click="AvailableSkills_Click"/>
-
-                        </MenuItem>
                     </Menu>
                 </Grid>
             </Border>
             <TabControl>
-                <TabItem Header="Setting" FontSize="22" Height="40" Width="130"></TabItem>
-                <TabItem Header="Archetype" FontSize="22" Height="40" Width="130"></TabItem>
-                <TabItem Header="Career" FontSize="22" Height="40" Width="130"></TabItem>
-                <TabItem Header="Stats/Skills" FontSize="22" Height="40" Width="130">
-                    <Viewbox>
-                <Grid Grid.Row="1" Height="810" Width="830">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="45"/>
-                        <RowDefinition Height="130"/>
-                        <RowDefinition Height="145"/>
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                    <DockPanel>
-                        <Label Content="Name: " DockPanel.Dock="Left" FontSize="22" FontWeight="Bold" VerticalAlignment="Center"/>
-                        <TextBox VerticalContentAlignment="Center" Margin="2" Name="NameTextBox" FontSize="18" Text="{Binding Character.Name, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor,AncestorType=Window}}"/>
-                    </DockPanel>
-                    <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
-                        <StackPanel Margin="3">
-                            <local:CharacteristicControl x:Name="BrawnCharacteristic" OnXPEvent="XpEvent" CharacteristicName="BRAWN" Margin="1" CharacteristicValue="{Binding Character.Brawn, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor,AncestorType=Window}}"/>
-                            <local:UpDownControl Height="20"  OnUpEvent="BrawnUp_Click" OnDownEvent="BrawnDown_Click"/>
-                        </StackPanel>
-                        <StackPanel Margin="3">
-                            <local:CharacteristicControl x:Name="AgilityCharacteristic" OnXPEvent="XpEvent" CharacteristicName="AGILITY" Margin="1" CharacteristicValue="{Binding Character.Agility, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor,AncestorType=Window}}"/>
-                            <local:UpDownControl Height="20" OnUpEvent="AgilityUp_Click" OnDownEvent="AgilityDown_Click"/>
-                        </StackPanel>
-                        <StackPanel Margin="3">
-                            <local:CharacteristicControl x:Name="IntellectCharacteristic" OnXPEvent="XpEvent" CharacteristicName="INTELLECT" Margin="1" CharacteristicValue="{Binding Character.Intellect, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor,AncestorType=Window}}"/>
-                            <local:UpDownControl Height="20" OnUpEvent="IntellectUp_Click" OnDownEvent="IntellectDown_Click"/>
-                        </StackPanel>
-                        <StackPanel Margin="3">
-                            <local:CharacteristicControl x:Name="CunningCharacteristic"  OnXPEvent="XpEvent" CharacteristicName="CUNNING" Margin="1" CharacteristicValue="{Binding Character.Cunning, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor,AncestorType=Window}}"/>
-                            <local:UpDownControl Height="20"  OnUpEvent="CunningUp_Click" OnDownEvent="CunningDown_Click"/>
-                        </StackPanel>
-                        <StackPanel Margin="3">
-                            <local:CharacteristicControl x:Name="WillpowerCharacteristic" OnXPEvent="XpEvent" CharacteristicName="WILLPOWER" Margin="1" CharacteristicValue="{Binding Character.Willpower, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor,AncestorType=Window}}"/>
-                            <local:UpDownControl Height="20" OnUpEvent="WillpowerUp_Click" OnDownEvent="WillpowerDown_Click"/>
-                        </StackPanel>
-                        <StackPanel Margin="3">
-                            <local:CharacteristicControl x:Name="PresenceCharacteristic" OnXPEvent="XpEvent" CharacteristicName="PRESENCE" Margin="1" CharacteristicValue="{Binding Character.Presence, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor,AncestorType=Window}}"/>
-                            <local:UpDownControl Height="20" OnUpEvent="PresenceUp_Click" OnDownEvent="PresenceDown_Click"/>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top">
-                        <StackPanel >
-                            <local:StatControl x:Name="SoakValueStatControl" IsSplit="True" StatName="SOAK VALUE" BottomLeftText="Base" BottomRightText="Modified" LinkedCharacteristicValue="{Binding ElementName=BrawnCharacteristic, Path=CharacteristicValue}" BaseValue="{Binding Character.SoakValue, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor,AncestorType=Window}}" />
-                            <local:UpDownControl Height="20" OnUpEvent="SoakUp_Click" OnDownEvent="SoakDown_Click"/>
-                        </StackPanel>
-                        <StackPanel>
-                            <local:StatControl x:Name="WoundStatControl" IsSplit="True" StatName="WOUNDS" BottomLeftText="Base" BottomRightText="Modified" LinkedCharacteristicValue="{Binding ElementName=BrawnCharacteristic, Path=CharacteristicValue}" BaseValue="{Binding Character.WoundThreshold, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor,AncestorType=Window}}"/>
-                            <local:UpDownControl Height="20" OnUpEvent="WoundsUp_Click" OnDownEvent="WoundsDown_Click"/>
-                        </StackPanel>
-                        <StackPanel>
-                            <local:StatControl x:Name="StrainStatControl" StatName="STRAIN" IsSplit="True" BottomLeftText="Base" BottomRightText="Modified" LinkedCharacteristicValue="{Binding ElementName=WillpowerCharacteristic, Path=CharacteristicValue}" BaseValue="{Binding Character.StrainThreshold, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor,AncestorType=Window}}"/>
-                            <local:UpDownControl Height="20" Margin="0,0,0,0" OnUpEvent="StrainUp_Click" OnDownEvent="StrainDown_Click"/>
-                        </StackPanel>
-                        <StackPanel>
-                            <local:StatControl x:Name="DefenseStatControl" StatName="DEFENSE" BottomLeftText="RANGED" BottomRightText="MELEE" UsesLinkedCharacteristic="False" LeftValue="{Binding Character.DefenseRanged, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor,AncestorType=Window}}" RightValue="{Binding Character.DefenseMelee, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor,AncestorType=Window}}" />
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                <local:UpDownControl Height="20" Margin="0,0,10,0" OnUpEvent="RangedUp_Click" OnDownEvent="RangedDown_Click"/>
-                                <local:UpDownControl Height="20" Margin="10,0,0,0" OnUpEvent="MeleeUp_Click" OnDownEvent="MeleeDown_Click"/>
-                            </StackPanel>
-                        </StackPanel>
-                    </StackPanel>
-                    <Grid Grid.Row="4">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <StackPanel Name="GeneralSkillsPanel">
-
-                            <!--<local:SkillControl x:Name="AlchemySkill" VerticalAlignment="Center" SkillName="Alchemy (Int)" LinkedCharacteristicValue="{Binding ElementName=IntellectCharacteristic, Path=CharacteristicValue}" OnXPEvent="XpEvent" Margin="0,3,0,3"/>
-                        <local:SkillControl x:Name="AstrocartographySkill" VerticalAlignment="Center" SkillName="Astrocartography (Int)" LinkedCharacteristicValue="{Binding ElementName=IntellectCharacteristic, Path=CharacteristicValue}" OnXPEvent="XpEvent" Margin="16,3,15.667,3"/>
-                        <local:SkillControl VerticalAlignment="Center" SkillName="Athletics (Br)" LinkedCharacteristicValue="{Binding ElementName=BrawnCharacteristic, Path=CharacteristicValue}" Margin="0,3,0,3"/>
-                        <local:SkillControl VerticalAlignment="Center" SkillName="Computers (Int)" LinkedCharacteristicValue="{Binding ElementName=IntellectCharacteristic, Path=CharacteristicValue}" Margin="0,3,0,3"/>
-                        <local:SkillControl VerticalAlignment="Center" SkillName="Cool (Pr)" LinkedCharacteristicValue="{Binding ElementName=PresenceCharacteristic, Path=CharacteristicValue}" Margin="0,3,0,3"/>
-                        <local:SkillControl VerticalAlignment="Center" SkillName="Coordination (Ag)" LinkedCharacteristicValue="{Binding ElementName=AgilityCharacteristic, Path=CharacteristicValue}" Margin="0,3,0,3"/>
-                        <local:SkillControl VerticalAlignment="Center" SkillName="Discipline (Will)" LinkedCharacteristicValue="{Binding ElementName=WillpowerCharacteristic, Path=CharacteristicValue}" Margin="0,3,0,3"/>
-                        <local:SkillControl VerticalAlignment="Center" SkillName="Driving (Ag)" LinkedCharacteristicValue="{Binding ElementName=AgilityCharacteristic, Path=CharacteristicValue}" Margin="0,3,0,3"/>
-                        <local:SkillControl VerticalAlignment="Center" SkillName="Mechanics (Int)" LinkedCharacteristicValue="{Binding ElementName=IntellectCharacteristic, Path=CharacteristicValue}" Margin="0,3,0,3"/>
-                        <local:SkillControl VerticalAlignment="Center" SkillName="Medicine (Int)" LinkedCharacteristicValue="{Binding ElementName=IntellectCharacteristic, Path=CharacteristicValue}" Margin="0,3,0,3"/>
-                        <local:SkillControl VerticalAlignment="Center" SkillName="Operating (Int)" LinkedCharacteristicValue="{Binding ElementName=IntellectCharacteristic, Path=CharacteristicValue}" Margin="0,3,0,3"/>-->
-                        </StackPanel>
-                        <StackPanel Grid.Column="1" Name="SkillsPanel2">
-                            
-                        </StackPanel>
-                    </Grid>
-                </Grid>
-            </Viewbox>
-                </TabItem>
-                <TabItem Header="Talents" FontSize="22" Height="40" Width="130">
-
-                </TabItem>
-                <TabItem Header="Background" FontSize="22" Height="40" Width="130">
+                <TabItem Header="Details" FontSize="22" Height="40" Width="130">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="60"/>
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Grid >
+                        <StackPanel Grid.ColumnSpan="2" Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal">
+                                <Label>Name</Label>
+                                <TextBox Width="200" Text="{Binding Character.Name, Mode=TwoWay}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>Archetype</Label>
+                                <TextBox Width="200" Text="{Binding Character.Archetype}" IsReadOnly="True"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>Career</Label>
+                                <TextBox Width="200" Text="{Binding Character.Career}" IsReadOnly="True"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
@@ -166,7 +85,7 @@
                                 <TextBox TextWrapping="Wrap" AcceptsReturn="True" Margin="2" FontSize="10" Text="{Binding Character.Fear, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor,AncestorType=Window}}"/>
                             </GroupBox>
                         </Grid>
-                        <GroupBox Header="Description" Grid.Column="1" FontSize="14">
+                        <GroupBox Header="Description" Grid.Row="1" Grid.Column="1" FontSize="14">
                             <StackPanel>
                                 <DockPanel>
                                     <Label DockPanel.Dock="Left">Gender:</Label>
@@ -198,10 +117,10 @@
 
                             </StackPanel>
                         </GroupBox>
-                        <GroupBox Header="Notes" Grid.Row="1" FontSize="14">
+                        <GroupBox Header="Notes" Grid.Row="2" FontSize="14">
                             <TextBox AcceptsReturn="True" TextWrapping="Wrap" FontSize="10" Text="{Binding Character.Notes, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor,AncestorType=Window}}"/>
                         </GroupBox>
-                        <GroupBox Grid.Row="1" Grid.Column="1">
+                        <GroupBox Grid.Row="2" Grid.Column="1">
                             <GroupBox.Header>
                                 <DockPanel>
                                     <Label DockPanel.Dock="Left" FontSize="14" Content="Character Illustration"/>
@@ -214,7 +133,91 @@
                             </Grid>
                         </GroupBox>
                     </Grid>
-                    
+
+                </TabItem>
+                <TabItem Header="Stats/Skills" FontSize="22" Height="40" Width="130">
+                    <Viewbox>
+                        <Grid Grid.Row="1" Height="746" Width="900" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="130"/>
+                                <RowDefinition Height="145"/>
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                <StackPanel Margin="3">
+                                    <local:CharacteristicControl x:Name="BrawnCharacteristic" OnXPEvent="XpEvent" CharacteristicName="BRAWN" Margin="1" CharacteristicValue="{Binding Character.Brawn, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor,AncestorType=Window}}"/>
+                                    <local:UpDownControl Height="20"  OnUpEvent="BrawnUp_Click" OnDownEvent="BrawnDown_Click"/>
+                                </StackPanel>
+                                <StackPanel Margin="3">
+                                    <local:CharacteristicControl x:Name="AgilityCharacteristic" OnXPEvent="XpEvent" CharacteristicName="AGILITY" Margin="1" CharacteristicValue="{Binding Character.Agility, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor,AncestorType=Window}}"/>
+                                    <local:UpDownControl Height="20" OnUpEvent="AgilityUp_Click" OnDownEvent="AgilityDown_Click"/>
+                                </StackPanel>
+                                <StackPanel Margin="3">
+                                    <local:CharacteristicControl x:Name="IntellectCharacteristic" OnXPEvent="XpEvent" CharacteristicName="INTELLECT" Margin="1" CharacteristicValue="{Binding Character.Intellect, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor,AncestorType=Window}}"/>
+                                    <local:UpDownControl Height="20" OnUpEvent="IntellectUp_Click" OnDownEvent="IntellectDown_Click"/>
+                                </StackPanel>
+                                <StackPanel Margin="3">
+                                    <local:CharacteristicControl x:Name="CunningCharacteristic"  OnXPEvent="XpEvent" CharacteristicName="CUNNING" Margin="1" CharacteristicValue="{Binding Character.Cunning, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor,AncestorType=Window}}"/>
+                                    <local:UpDownControl Height="20"  OnUpEvent="CunningUp_Click" OnDownEvent="CunningDown_Click"/>
+                                </StackPanel>
+                                <StackPanel Margin="3">
+                                    <local:CharacteristicControl x:Name="WillpowerCharacteristic" OnXPEvent="XpEvent" CharacteristicName="WILLPOWER" Margin="1" CharacteristicValue="{Binding Character.Willpower, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor,AncestorType=Window}}"/>
+                                    <local:UpDownControl Height="20" OnUpEvent="WillpowerUp_Click" OnDownEvent="WillpowerDown_Click"/>
+                                </StackPanel>
+                                <StackPanel Margin="3">
+                                    <local:CharacteristicControl x:Name="PresenceCharacteristic" OnXPEvent="XpEvent" CharacteristicName="PRESENCE" Margin="1" CharacteristicValue="{Binding Character.Presence, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor,AncestorType=Window}}"/>
+                                    <local:UpDownControl Height="20" OnUpEvent="PresenceUp_Click" OnDownEvent="PresenceDown_Click"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Top">
+                                <StackPanel >
+                                    <local:StatControl x:Name="SoakValueStatControl" IsSplit="True" StatName="SOAK VALUE" BottomLeftText="Base" BottomRightText="Modified" LinkedCharacteristicValue="{Binding ElementName=BrawnCharacteristic, Path=CharacteristicValue}" BaseValue="{Binding Character.SoakValue, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor,AncestorType=Window}}" />
+                                    <local:UpDownControl Height="20" OnUpEvent="SoakUp_Click" OnDownEvent="SoakDown_Click"/>
+                                </StackPanel>
+                                <StackPanel>
+                                    <local:StatControl x:Name="WoundStatControl" IsSplit="True" StatName="WOUNDS" BottomLeftText="Base" BottomRightText="Modified" LinkedCharacteristicValue="{Binding ElementName=BrawnCharacteristic, Path=CharacteristicValue}" BaseValue="{Binding Character.WoundThreshold, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor,AncestorType=Window}}"/>
+                                    <local:UpDownControl Height="20" OnUpEvent="WoundsUp_Click" OnDownEvent="WoundsDown_Click"/>
+                                </StackPanel>
+                                <StackPanel>
+                                    <local:StatControl x:Name="StrainStatControl" StatName="STRAIN" IsSplit="True" BottomLeftText="Base" BottomRightText="Modified" LinkedCharacteristicValue="{Binding ElementName=WillpowerCharacteristic, Path=CharacteristicValue}" BaseValue="{Binding Character.StrainThreshold, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor,AncestorType=Window}}"/>
+                                    <local:UpDownControl Height="20" Margin="0,0,0,0" OnUpEvent="StrainUp_Click" OnDownEvent="StrainDown_Click"/>
+                                </StackPanel>
+                                <StackPanel>
+                                    <local:StatControl x:Name="DefenseStatControl" StatName="DEFENSE" BottomLeftText="RANGED" BottomRightText="MELEE" UsesLinkedCharacteristic="False" LeftValue="{Binding Character.DefenseRanged, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor,AncestorType=Window}}" RightValue="{Binding Character.DefenseMelee, Mode=TwoWay, RelativeSource={RelativeSource FindAncestor,AncestorType=Window}}" />
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <local:UpDownControl Height="20" Margin="0,0,10,0" OnUpEvent="RangedUp_Click" OnDownEvent="RangedDown_Click"/>
+                                        <local:UpDownControl Height="20" Margin="10,0,0,0" OnUpEvent="MeleeUp_Click" OnDownEvent="MeleeDown_Click"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                            <Grid Grid.Row="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Name="GeneralSkillsPanel">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Margin="5,0,0,0">Skill Name</Label>
+                                        <Label Margin="40,0,0,0">Career?</Label>
+                                        <Label Margin="0,0,0,0">Rank</Label>
+                                        <Label Margin="100,0,0,0">Dice</Label>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Name="SkillsPanel2">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Margin="5,0,0,0">Skill Name</Label>
+                                        <Label Margin="40,0,0,0">Career?</Label>
+                                        <Label Margin="0,0,0,0">Rank</Label>
+                                        <Label Margin="100,0,0,0">Dice</Label>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                    </Viewbox>
+                </TabItem>
+                <TabItem Header="Talents" FontSize="22" Height="40" Width="130">
+
                 </TabItem>
             </TabControl>
         </DockPanel>

@@ -5,23 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GenesysCharacterCreator"
         mc:Ignorable="d"
-        Title="CareerEditorWindow" Height="616.115" Width="300" WindowStartupLocation="CenterScreen" AllowsTransparency="True">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition/>
-            <RowDefinition Height="45"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <DockPanel Grid.ColumnSpan="2">
-            <TextBlock DockPanel.Dock="Left" Text="Name: " VerticalAlignment="Center" />
-            <TextBox Name="NameTextBox" Margin="5"/>
+        Title="Career Editor" Height="440.945" Width="467.62" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True">
+    <Border Name="MainWindowBorder">
+        <DockPanel LastChildFill="True" >
+            <Border DockPanel.Dock="Top" Height="28" Name="titlebar" MouseLeftButtonDown="titlebar_MouseLeftButtonDown" BorderThickness="0" Background="LightGray">
+                <Grid>
+                    <TextBlock Text="{Binding Title, RelativeSource={RelativeSource FindAncestor,AncestorType=Window},FallbackValue=Title}" 
+                           Margin="10,0,0,0"
+                           VerticalAlignment="Center" HorizontalAlignment="Left">
+
+                    </TextBlock>
+                    <StackPanel Name="HomeButtonsPanel" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="2">
+                        <Button Margin="2,0,0,0" Name="ExitButton" Click="ExitButton_Click" Content="✖" FontSize="14" Height="23" Width="23" BorderThickness="0" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="45"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <DockPanel Grid.ColumnSpan="2">
+                    <TextBlock DockPanel.Dock="Left" Text="Name: " VerticalAlignment="Center" />
+                    <TextBox Name="NameTextBox" Margin="5"/>
+                </DockPanel>
+                <ListBox Grid.Row="1" Grid.Column="0" Name="AvailableCareersListBox" SelectionChanged="AvailableCareersListBox_SelectionChanged"/>
+                <ListBox Grid.Row="1" Grid.Column="1" Name="AvailableSkillsListBox" MouseDoubleClick="AvailableSkills_DoubleClick"/>
+                <ListBox Grid.Row="1" Grid.Column="2" Name="AssignedSkillsListBox" MouseDoubleClick="AssignedSkills_DoubleClick"/>
+                <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Content="New" Click="NewButton_Click" Margin="5" Width="200"/>
+                    <Button Content="Save" Click="SaveButton_Click" Margin="5" Width="200"/>
+                </StackPanel>
+            </Grid>
         </DockPanel>
-        <ListBox Grid.Row="1" Name="AvailableSkillsListBox" MouseDoubleClick="AvailableSkills_DoubleClick"/>
-        <ListBox Grid.Row="1" Grid.Column="1" Name="AssignedSkillsListBox" MouseDoubleClick="AssignedSkills_DoubleClick"/>
-        <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Save" Click="SaveButton_Click" Margin="5"/>
-    </Grid>
+    </Border>
 </Window>

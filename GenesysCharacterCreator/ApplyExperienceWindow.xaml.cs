@@ -60,6 +60,7 @@ namespace GenesysCharacterCreator
                     s.Rank = cs.StartingRank;
 
                 var sc = new SkillControl();
+                sc.EnforceStartMax = false;
                 sc.Margin = new Thickness(0, 1, 0, 1);
                 Binding b = new Binding("CharacteristicValue");
                 switch (s.LinkedCharacteristic)
@@ -187,7 +188,7 @@ namespace GenesysCharacterCreator
             _character.AvailableXp = AvailableExperience.Value;
             _character.Career = _career.Name;
             _character.Archetype = _archetype.Name;
-            //Globals.SaveCharacter(_character);
+            Globals.SaveCharacter(_character);
 
             this.Close();
         }

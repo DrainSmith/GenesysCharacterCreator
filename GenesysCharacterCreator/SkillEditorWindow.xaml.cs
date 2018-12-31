@@ -37,13 +37,19 @@ namespace GenesysCharacterCreator
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            var s = new Skill();
-            s.Name = NameTextBox.Text;
-            s.LinkedCharacteristic = (Characteristic)LinkedCharacteristicListBox.SelectedItem;
-            s.Description = DescriptionTextBox.Text;
-            Globals.AddBaseSkill(s);
-            UpdateSkills();
-            Globals.WriteBaseSkills();
+            if (NameTextBox.Text != string.Empty && LinkedCharacteristicListBox.SelectedIndex != -1)
+            {
+                var s = new Skill();
+                s.Name = NameTextBox.Text;
+                s.LinkedCharacteristic = (Characteristic)LinkedCharacteristicListBox.SelectedItem;
+                s.Description = DescriptionTextBox.Text;
+                Globals.AddBaseSkill(s);
+                UpdateSkills();
+                Globals.WriteBaseSkills();
+                NameTextBox.Text = "";
+                LinkedCharacteristicListBox.SelectedIndex = -1;
+                DescriptionTextBox.Text = "";
+            }
         }
 
         private void SkillListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -65,6 +71,16 @@ namespace GenesysCharacterCreator
                 Globals.DeleteBaseSkill(s);
                 UpdateSkills();
             }
+        }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void titlebar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
         }
     }
 }

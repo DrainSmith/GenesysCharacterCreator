@@ -29,6 +29,7 @@ namespace GenesysCharacterCreator
             {
                 AvailableSkills.Add(s);
             }
+            AvailableCareersListBox.ItemsSource = Globals.BaseCareers;
             SetSkillsToLists();
             WindowStartupLocation = WindowStartupLocation.CenterOwner;
         }
@@ -54,7 +55,8 @@ namespace GenesysCharacterCreator
             }
             Globals.AddBaseCareer(c);
             Globals.WriteBaseCareers();
-            this.Close();
+            New();
+            //this.Close();
         }
 
         private void AvailableSkills_DoubleClick(object sender, MouseButtonEventArgs e)
@@ -83,6 +85,43 @@ namespace GenesysCharacterCreator
 
                 SetSkillsToLists();
             }
+        }
+
+        private void AvailableCareersListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (AvailableCareersListBox.SelectedIndex != -1)
+            {
+                AssignedSkills = ((Career)AvailableCareersListBox.SelectedItem).Skills;
+                AvailableSkills = Globals.BaseSkills.Where(l2 => !AssignedSkills.Any(l1 => l1.GUID == l2.GUID)).ToList();
+                SetSkillsToLists();
+            }
+        }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void titlebar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        private void New()
+        {
+            NameTextBox.Text = "";
+            AvailableSkills.Clear();
+            foreach (var s in Globals.BaseSkills)
+            {
+                AvailableSkills.Add(s);
+            }
+            AssignedSkills.Clear();
+            AvailableCareersListBox.ItemsSource = Globals.BaseCareers;
+            SetSkillsToLists();
+        }
+        private void NewButton_Click(object sender, RoutedEventArgs e)
+        {
+            New();
         }
     }
 }

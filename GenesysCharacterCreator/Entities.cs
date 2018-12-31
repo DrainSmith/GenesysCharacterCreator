@@ -46,7 +46,7 @@ namespace GenesysCharacterCreator
 
         public override string ToString()
         {
-            return Name + "(" + Archetype + "," + Career + ")";
+            return Name + " (" + Archetype + ", " + Career + ")";
         }
 
     }
@@ -62,18 +62,17 @@ namespace GenesysCharacterCreator
     public class Skill : INotifyPropertyChanged
     {
         public string GUID { get; set; } = Guid.NewGuid().ToString();
-        private string _name;
-        public string Name { get { return OutputName(); } set { _name = value; } }
+        public string Name { get; set; }
         private int _rank;
         public int Rank { get { return _rank; } set { _rank = value; OnPropertyChanged("Rank"); } }
         public int StartingRank { get; set; }
-
+        public string OutputName { get { return ToString(); } }
         private bool _isCareer;
         public bool IsCareer { get { return _isCareer; } set { _isCareer = value; OnPropertyChanged("IsCareer"); } }
         public string Description { get; set; }
         public Characteristic LinkedCharacteristic { get; set; }
 
-        private string OutputName()
+        public override string ToString()
         {
             string c = "";
             switch (LinkedCharacteristic)
@@ -85,13 +84,9 @@ namespace GenesysCharacterCreator
                 case Characteristic.Presence: c = " (Pr)"; break;
                 case Characteristic.Willpower: c = " (Will)"; break;
             }
-            return _name + c;
+            return Name + c;
         }
 
-        public override string ToString()
-        {
-            return OutputName();
-        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -106,7 +101,6 @@ namespace GenesysCharacterCreator
 
     public enum Characteristic
     {
-        None,
         Brawn,
         Agility,
         Intellect,

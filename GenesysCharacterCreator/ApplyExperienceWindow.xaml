@@ -69,17 +69,6 @@
                             <Label Margin="0,0,0,0">Rank</Label>
                             <Label Margin="100,0,0,0">Dice</Label>
                         </StackPanel>
-                        <!--<local:SkillControl x:Name="AlchemySkill" VerticalAlignment="Center" SkillName="Alchemy (Int)" LinkedCharacteristicValue="{Binding ElementName=IntellectCharacteristic, Path=CharacteristicValue}" OnXPEvent="XpEvent" Margin="0,3,0,3"/>
-                        <local:SkillControl x:Name="AstrocartographySkill" VerticalAlignment="Center" SkillName="Astrocartography (Int)" LinkedCharacteristicValue="{Binding ElementName=IntellectCharacteristic, Path=CharacteristicValue}" OnXPEvent="XpEvent" Margin="16,3,15.667,3"/>
-                        <local:SkillControl VerticalAlignment="Center" SkillName="Athletics (Br)" LinkedCharacteristicValue="{Binding ElementName=BrawnCharacteristic, Path=CharacteristicValue}" Margin="0,3,0,3"/>
-                        <local:SkillControl VerticalAlignment="Center" SkillName="Computers (Int)" LinkedCharacteristicValue="{Binding ElementName=IntellectCharacteristic, Path=CharacteristicValue}" Margin="0,3,0,3"/>
-                        <local:SkillControl VerticalAlignment="Center" SkillName="Cool (Pr)" LinkedCharacteristicValue="{Binding ElementName=PresenceCharacteristic, Path=CharacteristicValue}" Margin="0,3,0,3"/>
-                        <local:SkillControl VerticalAlignment="Center" SkillName="Coordination (Ag)" LinkedCharacteristicValue="{Binding ElementName=AgilityCharacteristic, Path=CharacteristicValue}" Margin="0,3,0,3"/>
-                        <local:SkillControl VerticalAlignment="Center" SkillName="Discipline (Will)" LinkedCharacteristicValue="{Binding ElementName=WillpowerCharacteristic, Path=CharacteristicValue}" Margin="0,3,0,3"/>
-                        <local:SkillControl VerticalAlignment="Center" SkillName="Driving (Ag)" LinkedCharacteristicValue="{Binding ElementName=AgilityCharacteristic, Path=CharacteristicValue}" Margin="0,3,0,3"/>
-                        <local:SkillControl VerticalAlignment="Center" SkillName="Mechanics (Int)" LinkedCharacteristicValue="{Binding ElementName=IntellectCharacteristic, Path=CharacteristicValue}" Margin="0,3,0,3"/>
-                        <local:SkillControl VerticalAlignment="Center" SkillName="Medicine (Int)" LinkedCharacteristicValue="{Binding ElementName=IntellectCharacteristic, Path=CharacteristicValue}" Margin="0,3,0,3"/>
-                        <local:SkillControl VerticalAlignment="Center" SkillName="Operating (Int)" LinkedCharacteristicValue="{Binding ElementName=IntellectCharacteristic, Path=CharacteristicValue}" Margin="0,3,0,3"/>-->
                     </StackPanel>
                     <StackPanel Grid.Column="1" Name="SkillsPanel2">
                         <StackPanel Orientation="Horizontal">

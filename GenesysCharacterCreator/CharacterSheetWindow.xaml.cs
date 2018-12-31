@@ -36,22 +36,35 @@ namespace GenesysCharacterCreator
             PropertyChanged?.Invoke(this, e);
         }
 
-        public CharacterSheetWindow()
+        public static DependencyProperty SkillList1Property = DependencyProperty.Register("SkillListSource1", typeof(List<SkillControl>), typeof(CharacterSheetWindow), new PropertyMetadata(new List<SkillControl>()));
+
+        public List<SkillControl> SkillListSource1
         {
+            get { return (List<SkillControl>)GetValue(SkillList1Property); }
+            set { SetValue(SkillList1Property, value); OnPropertyChanged(new PropertyChangedEventArgs("SkillListSource1")); }
+        }
+        public static DependencyProperty SkillList2Property = DependencyProperty.Register("SkillListSource2", typeof(List<SkillControl>), typeof(CharacterSheetWindow), new PropertyMetadata(new List<SkillControl>()));
+
+        public List<SkillControl> SkillListSource2
+        {
+            get { return (List<SkillControl>)GetValue(SkillList2Property); }
+            set { SetValue(SkillList2Property, value); OnPropertyChanged(new PropertyChangedEventArgs("SkillListSource2")); }
+        }
+        public CharacterSheetWindow(Character character)
+        {
+            MyCharacter = character;
             InitializeComponent();
             DataContext = this;
-            Globals.ReadBaseSkills();
-            MyCharacter.Skills = Globals.BaseSkills;
+            //Globals.ReadBaseSkills();
             AddSkills();
         }
 
         public void AddSkills()
         {
             int count = 0;
-            GeneralSkillsPanel.Children.Clear();
-            SkillsPanel2.Children.Clear();
             foreach (var s in MyCharacter.Skills)
             {
+
                 var sc = new SkillControl();
                 sc.Margin = new Thickness(0, 1, 0, 1);
                 Binding b = new Binding("CharacteristicValue");
@@ -67,12 +80,42 @@ namespace GenesysCharacterCreator
                 b.Path = new PropertyPath("CharacteristicValue");
                 sc.SetBinding(SkillControl.LinkedCharacteristicValueProperty, b);
                 sc.OnXPEvent += XpEvent;
-                if (count <= MyCharacter.Skills.Count / 2)
+                if (count < MyCharacter.Skills.Count / 2)
                     GeneralSkillsPanel.Children.Add(sc);
                 else SkillsPanel2.Children.Add(sc);
+
                 sc.MySkill = s;
+                
                 count++;
             }
+            
+        }
+        public static List<T>[] Partition<T>(List<T> list, int totalPartitions)
+        {
+            if (list == null)
+                throw new ArgumentNullException("list");
+
+            if (totalPartitions < 1)
+                throw new ArgumentOutOfRangeException("totalPartitions");
+
+            List<T>[] partitions = new List<T>[totalPartitions];
+
+            int maxSize = (int)Math.Ceiling(list.Count / (double)totalPartitions);
+            int k = 0;
+
+            for (int i = 0; i < partitions.Length; i++)
+            {
+                partitions[i] = new List<T>();
+                for (int j = k; j < k + maxSize; j++)
+                {
+                    if (j >= list.Count)
+                        break;
+                    partitions[i].Add(list[j]);
+                }
+                k += maxSize;
+            }
+
+            return partitions;
         }
 
         private void titlebar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -202,17 +245,7 @@ namespace GenesysCharacterCreator
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            Microsoft.Win32.SaveFileDialog dialog = new Microsoft.Win32.SaveFileDialog();
-            dialog.FileName = MyCharacter.Name;
-            dialog.DefaultExt = ".gcs"; 
-            dialog.Filter = "Genesys Character (.gcs)|*.gcs";
-            var result = dialog.ShowDialog();
-
-            if (result == true)
-            {
-                string filename = dialog.FileName;
-                FileInterface.SaveCharacter(MyCharacter, filename);
-            }
+            Globals.SaveCharacter(MyCharacter);
         }
 
         private void AvailableSkills_Click(object sender, RoutedEventArgs e)
@@ -245,5 +278,6 @@ namespace GenesysCharacterCreator
             AddSkills();
 
         }
+
     }
 }

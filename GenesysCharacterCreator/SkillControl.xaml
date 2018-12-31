@@ -14,7 +14,7 @@
             <ColumnDefinition Width="155"/>
             
         </Grid.ColumnDefinitions>
-        <TextBlock x:Name="SkillNameTextBlock" Grid.Column="1" Text="{Binding Skill.Name}" FontSize="14" VerticalAlignment="Center" Margin="3,0,0,0"/>
+        <TextBlock x:Name="SkillNameTextBlock" Grid.Column="1" Text="{Binding Skill.OutputName}" FontSize="14" VerticalAlignment="Center" Margin="3,0,0,0"/>
         <local:CareerCheckBox x:Name="CareerCheckBox" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" IsHitTestVisible="True" IsChecked="{Binding Skill.IsCareer}"/>
         <TextBlock x:Name="RankTextBlock" Grid.Column="3" VerticalAlignment="Center" Text="{Binding Skill.Rank}" HorizontalAlignment="Center"/>
         <StackPanel x:Name="DicePanel" Grid.Column="4" Height="22" HorizontalAlignment="Right" Orientation="Horizontal">

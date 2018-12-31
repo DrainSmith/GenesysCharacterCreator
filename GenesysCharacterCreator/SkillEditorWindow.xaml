@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:GenesysCharacterCreator"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="Skill Editor" Height="307.136" Width="416.551" WindowStartupLocation="CenterScreen" AllowsTransparency="True">
+        Title="Skill Editor" Height="396.213" Width="416.551" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True">
     <Window.Resources>
         <ObjectDataProvider x:Key="Characteristics" MethodName="GetValues"
                             ObjectType="{x:Type sys:Enum}">
@@ -15,23 +15,42 @@
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
     </Window.Resources>
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="45"/>
-        </Grid.RowDefinitions>
-        <ListBox Name="SkillListBox" SelectionChanged="SkillListBox_SelectionChanged"/>
-        <StackPanel Grid.Column="1">
-            <TextBox Name="NameTextBox"/>
-            <ListBox Name="LinkedCharacteristicListBox" Height="129" Width="75" HorizontalAlignment="Left" ItemsSource="{Binding Source={StaticResource Characteristics}}" />
-            <TextBox Name="DescriptionTextBox" TextWrapping="Wrap" AcceptsReturn="True" Height="90"/>
-        </StackPanel>
-        <Button Height="40" Width="70" Grid.Row="1" Grid.Column="0" Content="Delete" Click="DeleteButton_Click"/>
-        <Button Height="40" Width="70" Grid.Row="1" Grid.Column="1" Content="Add/Update" Click="AddButton_Click"/>
-        
-    </Grid>
+    <Border Name="MainWindowBorder">
+        <DockPanel LastChildFill="True" >
+            <Border DockPanel.Dock="Top" Height="28" Name="titlebar" MouseLeftButtonDown="titlebar_MouseLeftButtonDown" BorderThickness="0" Background="LightGray">
+                <Grid>
+                    <TextBlock Text="{Binding Title, RelativeSource={RelativeSource FindAncestor,AncestorType=Window},FallbackValue=Title}" 
+                           Margin="10,0,0,0"
+                           VerticalAlignment="Center" HorizontalAlignment="Left">
+
+                    </TextBlock>
+                    <StackPanel Name="HomeButtonsPanel" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="2">
+                        <Button Margin="2,0,0,0" Name="ExitButton" Click="ExitButton_Click" Content="✖" FontSize="14" Height="23" Width="23" BorderThickness="0" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="45"/>
+                </Grid.RowDefinitions>
+                <ListBox Name="SkillListBox" SelectionChanged="SkillListBox_SelectionChanged"/>
+                <StackPanel Grid.Column="1">
+                    <Label Content="Skill Name"/>
+                    <TextBox Name="NameTextBox"/>
+                    <Label Content="Linked Characteristic"/>
+                    <ListBox Name="LinkedCharacteristicListBox" Height="147" Width="87" HorizontalAlignment="Left" ItemsSource="{Binding Source={StaticResource Characteristics}}" />
+                    <Label Content="Description"/>
+                    <TextBox Name="DescriptionTextBox" TextWrapping="Wrap" AcceptsReturn="True" Height="67"/>
+                </StackPanel>
+                <Button Height="40" Width="70" Grid.Row="1" Grid.Column="0" Content="Delete" Click="DeleteButton_Click"/>
+                <Button Height="40" Width="70" Grid.Row="1" Grid.Column="1" Content="Add/Update" Click="AddButton_Click"/>
+
+            </Grid>
+        </DockPanel>
+    </Border>
 </Window>

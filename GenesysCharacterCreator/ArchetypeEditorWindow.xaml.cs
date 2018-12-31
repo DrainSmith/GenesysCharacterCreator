@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,23 +20,33 @@ namespace GenesysCharacterCreator
     /// </summary>
     public partial class ArchetypeEditorWindow : Window
     {
+        public Archetype MyArchetype
+        {
+            get { return (Archetype)GetValue(ArchetypeProperty); }
+            set { SetValue(ArchetypeProperty, value); OnPropertyChanged(new PropertyChangedEventArgs("MyArchetype")); }
+        }
+
+        public static DependencyProperty ArchetypeProperty = DependencyProperty.Register("MyArchetype", typeof(Archetype), typeof(ArchetypeEditorWindow), new PropertyMetadata(new Archetype()));
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(PropertyChangedEventArgs e)
+        {
+            PropertyChanged?.Invoke(this, e);
+        }
+
         List<Skill> AvailableSkills = new List<Skill>();
         List<Skill> AssignedSkills = new List<Skill>();
-
-        public ArchetypeEditorWindow(Archetype archetype)
-        {
-
-        }
 
         public ArchetypeEditorWindow()
         {
             InitializeComponent();
+            DataContext = this;
             foreach (var s in Globals.BaseSkills)
             {
                 AvailableSkills.Add(s);
             }
             AvailableSkills.Add(new Skill() { Name = "{Any}" });
             SetSkillsToLists();
+            AvailableArchetypes.ItemsSource = Globals.BaseArchetypes;
         }
 
         private void SetSkillsToLists()
@@ -206,30 +217,31 @@ namespace GenesysCharacterCreator
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            var arch = new Archetype();
-            arch.Name = NameTextBox.Text;
-            arch.Agility = AgilityCharacteristic.CharacteristicValue;
-            arch.Brawn = BrawnCharacteristic.CharacteristicValue;
-            arch.Cunning = CunningCharacteristic.CharacteristicValue;
-            arch.Intellect = IntellectCharacteristic.CharacteristicValue;
-            arch.Presence = PresenceCharacteristic.CharacteristicValue;
-            arch.Willpower = WillpowerCharacteristic.CharacteristicValue;
 
-            arch.StartingXP = StartingExperience.Value;
-            arch.WoundThreshold = WoundsControl.BaseValue;
-            arch.StrainThreshold = StrainControl.BaseValue;
 
             foreach (var s in AssignedSkills)
             {
-                arch.StartingSkills.Add(s);
+                MyArchetype.StartingSkills.Add(s);
             }
 
             foreach (var s in SpecialAbilityListBox.Items)
-                arch.SpecialAbilities.Add((SpecialAbility)s);
+                MyArchetype.SpecialAbilities.Add((SpecialAbility)s);
 
-            Globals.AddBaseArchtype(arch);
+            Globals.AddBaseArchtype(MyArchetype);
             Globals.WriteBaseArchtypes();
             this.Close();
+        }
+
+        private void AvailableArchetypes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (AvailableArchetypes.SelectedIndex != -1)
+            {
+                MyArchetype = (Archetype)AvailableArchetypes.SelectedItem;
+                AssignedSkills = MyArchetype.StartingSkills;
+                AvailableSkills = Globals.BaseSkills.Where(l2 => !AssignedSkills.Any(l1 => l1.GUID == l2.GUID)).ToList();
+                AvailableSkills.Add(new Skill() { Name = "{Any}" });
+                SetSkillsToLists();
+            }
         }
     }
 }

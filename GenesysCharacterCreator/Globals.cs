@@ -236,5 +236,22 @@ namespace GenesysCharacterCreator
                 Characters = Characters.OrderBy(s => s.Name).ToList();
             }
         }
+
+        public static void SaveCharacter(Character c)
+        {
+            var find = Characters.Find(ch => ch.GUID == c.GUID);
+            if (find != null)
+                Characters.Remove(find);
+            Characters.Add(c);
+            string appDataPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
+            Directory.CreateDirectory(appDataPath);
+            string settingsPath = Path.Combine(appDataPath, @"characters.xml");
+            XmlSerializer xmlSerial = XmlSerializer.FromTypes(new[] { typeof(List<Character>) })[0];
+            using (Stream fStream = new FileStream(settingsPath, FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                xmlSerial.Serialize(fStream, Characters.OrderBy(s => s.Name).ToList());
+            }
+            main.RefreshCharacters();
+        }
     }
 }
